@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>DALI Dashboard</title>
+    <link rel="stylesheet" type="text/css" href="static/foundation.css">
+    <link rel="stylesheet" type="text/css" href="static/styles.css">
+  </head>
+
+  <body>
+    <div class="header">
+      <div id="head1">
+	<h1>DALI Lab Dashboard</h1>
+      </div>
+      <div id = "head2">
+	       DALI Lab Members {{group}}
+      </div>
+    </div>
+
+    <div class="header2">
+      <form method="post">
+	<div class="grid-x grid-padding-x">
+	  <div class="large-2 medium-2 small-1 cell">
+	    <label></label>
+	  </div>
+	  <div class="sectioning">
+	    <div class="large-5 medium-6 small-8 cell" >
+              <label><center>Input desired on-term:</center></label>
+              <input type="text" placeholder="Ex: 17X" name="term" step="0.01" min="0" class="input-group-field"/>
+	      <!--<span class="input-group-label">g</span>-->
+            </div>
+	  </div>
+	  <div class="large-2 medium-2 small-1 cell">
+	    <label></label>
+	  </div>
+	</div>
+
+	<div class="grid-x grid-padding-x">
+	  <div class="large-2 medium-2 small-1 cell">
+	    <label></label>
+	  </div>
+	  <div class="sectioning">
+	  </div>
+	  <div class="large-2 medium-2 small-1 cell">
+	    <label></label>
+	  </div>
+	</div>
+	<div>
+	  <button class="secondary button" type="submit">
+	    Search!
+	  </button>
+	</div>
+  {% for person in display %}
+
+  <h3><a href={{display[person]["url"]}}>{{person}}</a></h3>
+  <img src="//mappy.dali.dartmouth.edu/" + {{display[person]["iconURL"]}} height="100" width="100">
+<!-- <h3>{{person}}</h3>-->
+  On for {{display[person]["termsOn"]}}<br>
+  Project: {{display[person]["project"]}}<br>
+  From: latitude {{display[person]["lat"]}}   and longitude: {{display[person]["long"]}}<br>
+  Message: {{display[person]["message"]}}<br>
+<br>
+{% endfor %}
+  <br><br>
+      </form>
+    </div>
+
+  </body>
+</html>

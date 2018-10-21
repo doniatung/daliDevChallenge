@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>DALI Dashboard<</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="narrow-jumbotron.css" rel="stylesheet">
+  </head>
+
+  <body style="background-color:lavender;">
+
+    <div class="container">
+      <div class="header clearfix">
+        <h3 class="text-muted">DALI Dashboard</h3>
+      </div>
+
+      <div class="jumbotron" style="background-color:beige;">
+        <h3 class="display-3" style="text-align:center;"> DALI Lab Members {{group}}</h3>
+      </div>
+
+    <div class=".container-fluid" style="text-align:center;" >
+
+      {% for person in display %}
+
+      <h3><a href={{display[person]["url"]}}>{{person}}</a></h3>
+      <img src={{display[person]["iconURL"]}} height="100" width="100">
+    <!-- <h3>{{person}}</h3>-->
+    {{display[person]}}<br>
+    <!--{{display[person]["url"]}}-->
+    <br>
+    {% endfor %}
+      <br><br>
+          <form method = "POST" action ="/search_result">
+	    <h4>Zip Code:</h4> <br>
+	    <input type="text" name="zipcode" required> <br><br>
+            <input type="submit" value = "Take me away!">
+          </form>
+      </div>
+      <footer class="footer">
+        <a href="/user_history">View Listening History</a> <br>
+        <a href="/logout">Logout</a>
+      </footer>
+
+    </div>
+  </body>
+</html>
