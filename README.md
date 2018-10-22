@@ -1,10 +1,8 @@
 # daliDevChallenge
 
+Okay, I am letting you know that this app runs super duper slowly because it uses a pretty bad API to find the hometown location of the students, but just have faith because eventually it will run, I promise. 
 
-Hi! So you run this by cloning the repo
-
-
-### Virtual Environment, Flask, and Requests
+### Instructions on Running this App
 Flask needs to be installed in order to run this program. It is ideally stored in a virtual environment (venv).
 
 To install a venv called <name>, run these commands in your terminal:
