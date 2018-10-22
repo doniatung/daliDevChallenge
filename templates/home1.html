@@ -1,13 +1,32 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>DALI Dashboard</title>
     <link rel="stylesheet" type="text/css" href="static/foundation.css">
     <link rel="stylesheet" type="text/css" href="static/styles.css">
+    <style>
+* {
+    box-sizing: border-box;
+}
+
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px;
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
+
   </head>
 
-  <body>
-    <div class="header">
+  <body style="background-color:#CFCDCC;">
+    <div class="header" style="background-color:#5ACCDE;">
       <div id="head1">
 	<h1>DALI Lab Dashboard</h1>
       </div>
@@ -22,49 +41,46 @@
 	  <div class="large-2 medium-2 small-1 cell">
 	    <label></label>
 	  </div>
-	  <div class="sectioning">
-	    <div class="large-5 medium-6 small-8 cell" >
-              <label><center>Input desired on-term:</center></label>
-              <input type="text" placeholder="Ex: 17X" name="term" step="0.01" min="0" class="input-group-field"/>
-	      <!--<span class="input-group-label">g</span>-->
-            </div>
+	  <!--<div class="sectioning">-->
+    <div class="large-2 medium-1 small-3 cell">
 	  </div>
+	    <div class="large-4 medium-6 small-8 cell" >
+          <label>Input desired on-term: </label>
+              <input type="text" placeholder="Ex: 17X" name="term" step="0.01" min="0" class="input-group-field"/>
+            </div>
+	  <!--</div>-->
 	  <div class="large-2 medium-2 small-1 cell">
-	    <label></label>
 	  </div>
 	</div>
 
 	<div class="grid-x grid-padding-x">
-	  <div class="large-2 medium-2 small-1 cell">
-	    <label></label>
-	  </div>
 	  <div class="sectioning">
 	  </div>
 	  <div class="large-2 medium-2 small-1 cell">
-	    <label></label>
 	  </div>
 	</div>
 	<div>
-	  <button class="secondary button" type="submit">
+	  <button class="secondary button" type="submit" style="background-color:#DF6719;">
 	    Search!
 	  </button>
 	</div>
+</form>
+</div>
+
+<div class="row">
   {% for person in display %}
-
-  <h3><a href={{display[person]["url"]}}>{{person}}</a></h3>
-  <img src={{display[person]["iconURL"]}} height="100" width="100">
-<!-- <h3>{{person}}</h3>-->
-
-<br>
-  On for <b>{{display[person]["termsOn"]}}</b><br>
-  Project: {{display[person]["project"]}}<br>
-  From: latitude {{display[person]["lat"]}}   and longitude: {{display[person]["long"]}}<br>
-  Message: {{display[person]["message"]}}<br>
-<br>
+  <div class="column" >
+    <h3><a href={{display[person]["url"]}}>{{person}}</a></h3>
+    <img src={{display[person]["iconURL"]}} height="100" width="100">
+    <br>
+    On for <b>{{display[person]["termsOn"]}}</b><br>
+    Project: {{display[person]["project"]}}<br>
+    From:  {{display[person]["hometown"]}}  <br>
+    Message: {{display[person]["message"]}}<br>
+    <br>
+  </div>
 {% endfor %}
-  <br><br>
-      </form>
-    </div>
 
+</div>
   </body>
 </html>

@@ -31,10 +31,15 @@
       <h3><a href={{display[person]["url"]}}>{{person}}</a></h3>
       <img src={{display[person]["iconURL"]}} height="100" width="100">
     <!-- <h3>{{person}}</h3>-->
-    {{display[person]}}<br>
-    <!--{{display[person]["url"]}}-->
+
+    <br>
+      On for <b>{{display[person]["termsOn"]}}</b><br>
+      Project: {{display[person]["project"]}}<br>
+      From: latitude {{display[person]["lat"]}}   and longitude: {{display[person]["long"]}}<br>
+      Message: {{display[person]["message"]}}<br>
     <br>
     {% endfor %}
+      <br><br>
       <br><br>
           <form method = "POST" action ="/search_result">
 	    <h4>Zip Code:</h4> <br>

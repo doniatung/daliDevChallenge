@@ -3,6 +3,21 @@ import urllib2, json
 
 my_app = Flask(__name__)
 
+def findLoc(lat, long):
+    data = "https://api.opencagedata.com/geocode/v1/json?q=" + lat + "+" + long + "&key=3bca35db76e64e53bbb8d1f69af6fb7a&q=52.51627%2C13.37769&pretty=1"
+    u = urllib2.urlopen(data)
+    d = json.loads(u.read())
+    results = d["results"]
+    if (len(results) > 0):
+        country = results[0]["components"]["country"]
+        if (country == "USA"):
+            components = results[0]["components"]["state"] + ", " + country
+        else:
+            components = country
+    else:
+        components = "can't find location?"
+    return components
+
 
 @my_app.route('/', methods=['GET', 'POST'])
 def root():
@@ -19,8 +34,7 @@ def root():
         info["termsOn"] = d[counter]["terms_on"][0]
         info["iconURL"] = "../static/" + d[counter]["iconUrl"]
         info["message"] = d[counter]["message"]
-        info["lat"] = d[counter]["lat_long"][0]
-        info["long"] = d[counter]["lat_long"][1]
+        info["hometown"] = findLoc(str(d[counter]["lat_long"][0]),str(d[counter]["lat_long"][1]))
         if (len(d[counter]["project"]) > 0):
             info["project"] = d[counter]["project"][0]
         else:
@@ -28,12 +42,18 @@ def root():
         pdict[person] = info
         counter +=1
     if (request.method =="POST"):
-        for person in pdict:
-            if (pdict[person]["termsOn"] == request.form["term"]):
-                display[person] = pdict[person]
+        group = ":" + request.form["term"]
+        if (request.form["term"] == "all"):
+            display = pdict
+            group = " : all"
+        else:
+            for person in pdict:
+                if (pdict[person]["termsOn"] == request.form["term"]):
+                    display[person] = pdict[person]
     else:
         display = pdict
-    return render_template('home1.html', group = " : all", display = display)
+        group = " : all"
+    return render_template('home1.html', group = group, display = display)
 
 
 
