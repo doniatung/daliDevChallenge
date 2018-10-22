@@ -52,9 +52,11 @@
   {% for person in display %}
 
   <h3><a href={{display[person]["url"]}}>{{person}}</a></h3>
-  <img src="//mappy.dali.dartmouth.edu/" + {{display[person]["iconURL"]}} height="100" width="100">
+  <img src={{display[person]["iconURL"]}} height="100" width="100">
 <!-- <h3>{{person}}</h3>-->
-  On for {{display[person]["termsOn"]}}<br>
+
+<br>
+  On for <b>{{display[person]["termsOn"]}}</b><br>
   Project: {{display[person]["project"]}}<br>
   From: latitude {{display[person]["lat"]}}   and longitude: {{display[person]["long"]}}<br>
   Message: {{display[person]["message"]}}<br>

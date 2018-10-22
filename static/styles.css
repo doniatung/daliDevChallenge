@@ -1,7 +1,7 @@
 .header {
     border: 25px solid #D5467;
     padding: 40px;
-    background-color: #794209;
+    background-color: #00FFFF;
     text-align: center;
 }
 
@@ -13,12 +13,13 @@
 
 .pad{
     padding: 100px;
-    text-align: center;
+  }
+    /*text-align: center;
 }
 
 .centered{
     text-align:center;
-}
+}*/
 
 .sectioning{
     padding-top: 30px;
@@ -26,7 +27,7 @@
 
 #head1{
     text-align:center;
-    color: #F1EDEE;
+    color: #00FFFF;
     font-family: Georgia, serif;
     font-weight: bold;
     font-style: italic;
@@ -35,7 +36,7 @@
 
 #head2{
     text-align: center;
-    color: #FFFFFF;
+    color: #00FFFF;
     font-family: Georgia, serif;
     font-style: italic;
     font-size: 100%;
